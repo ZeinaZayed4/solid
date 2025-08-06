@@ -1,25 +1,63 @@
 <?php
 
+use SOLID\LSP\Encrypter;
+use SOLID\LSP\EncrypterSubType;
+use SOLID\LSP\LSPViolation;
+use SOLID\LSP\LSPViolationSubType;
+use SOLID\LSP\LSPViolationType;
+use SOLID\LSP\Rectangle;
+use SOLID\LSP\Square;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
-use SOLID\OCP\Driver;
-use SOLID\OCP\MoveOverWaves;
-use SOLID\OCP\Route;
-use SOLID\OCP\Ship;
-use SOLID\OCP\Trip;
+$rectangle = new Square();
+$rectangle->setWidth(4);
+$rectangle->setHeight(6);
 
-$ahmed = new Driver('Ahmed', 25, 'SA23456B', 'Egypt');
+echo "Rectangle area with {$rectangle->getWidth()} width and {$rectangle->getHeight()} height = {$rectangle->calculateArea()}<br/>";
 
-$route80 = new Route('Cairo', 'Alexandria', 302);
-$route90 = new Route('Alexandria', 'Marsa Matruh', 435);
+function f(Rectangle $rectangle): void
+{
+    if ($rectangle instanceof Square) {
+        if ($rectangle->calculateArea() !== 36) {
+            echo 'Something is wrong!';
+        }
+    } else {
+        if ($rectangle->calculateArea() !== 24) {
+            echo 'Something is wrong!';
+        }
+    }
+}
 
-$vehicle = new Ship();
-$vehicle->setDriver($ahmed);
-$vehicle->setColor('blue');
-$vehicle->setMaximumSpeed(135);
-$vehicle->addRoute($route80);
-$vehicle->addRoute($route90);
-$vehicle->setMoveable(new MoveOverWaves());
+f($rectangle);
 
-$trip = new Trip($vehicle, 'R210', 250.4, 120);
-echo $trip->move();
+/** Preconditions
+ * $name must be a string
+ * $name mustn't be more than 25 characters
+ * $name's first letter must be a capital letter
+ **/
+function hello($name)
+{
+    /** Invariants
+     * loop-invariant
+     **/
+
+    /** Postconditions
+     * the whole string mustn't exceed 35 characters
+     * the whole string mustn't be lowercase, all letters should be uppercase
+     **/
+}
+
+$violation = new LSPViolationSubType();
+$violation->setSalary(2000);
+
+$violationExample = new LSPViolation();
+echo $violationExample->calculateSalaryOfEmployee($violation, 16) . '<br />';
+
+$encrypter = new Encrypter();
+$encrypter->setString('Zeina');
+echo $encrypter->encryptString() . '<br />';
+
+$encrypterSub = new EncrypterSubType();
+$encrypterSub->setString('Zeina');
+echo $encrypterSub->encryptString() . '<br />';
