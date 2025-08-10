@@ -20,5 +20,6 @@
   3. Invariants of the supertype must be preserved in a subtype.
 
 ### I: Interface Segregation
+- ISP states that no client should be forced to depend on methods it doesn't use.
 
 ### D: Dependency Inversion
