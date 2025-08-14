@@ -1,9 +1,9 @@
 <?php
 
-use SOLID\OCP\Course\AttackerPlayer;
-use SOLID\OCP\Course\DefenderPlayer;
-use SOLID\OCP\Course\Game;
-use SOLID\OCP\Course\KeeperPlayer;
+use SOLID\LSP\Course\AttackerPlayer;
+use SOLID\LSP\Course\DefenderPlayer;
+use SOLID\LSP\Course\Game;
+use SOLID\LSP\Course\KeeperPlayer;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
