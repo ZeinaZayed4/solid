@@ -1,23 +1,24 @@
 <?php
 
-use SOLID\LSP\Course\AttackerPlayer;
-use SOLID\LSP\Course\DefenderPlayer;
-use SOLID\LSP\Course\Game;
-use SOLID\LSP\Course\KeeperPlayer;
+use SOLID\ISP\Course\Attacker;
+use SOLID\ISP\Course\Defender;
+use SOLID\ISP\Course\Game;
+use SOLID\ISP\Course\Keeper;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$players = [];
+$defenders = [];
+$attackers = [];
 
 for ($i = 1; $i <= 5; ++$i) {
-    $players[$i] = new DefenderPlayer();
+    $defenders[$i] = new Defender();
 }
 
 for ($i = 6; $i <= 10; ++$i) {
-    $players[$i] = new AttackerPlayer();
+    $attackers[$i] = new Attacker();
 }
 
-$players[] = new KeeperPlayer();
+$keeper = new Keeper();
 
-$game = new Game($players);
+$game = new Game($defenders, $attackers, $keeper);
 $game->start();
