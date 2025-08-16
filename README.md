@@ -9,7 +9,7 @@
 ### O: OCP (Open/Closed Principle)
 - Software entities (classes, modules, functions, etc...) should be open for extension, but closed for modification.
 
-### L: Liskov's Substitution
+### L: LSP (Liskov Substitution Principle)
 - Barbara Liskov 1994
   - Let f(x) be a property provable about objects x of type T. Then f(Y) should be true for objects y of type S where S is a subtype of T.
 - Robert Martin 1996
@@ -19,7 +19,9 @@
   2. Postconditions can't be weakened in a subtype.
   3. Invariants of the supertype must be preserved in a subtype.
 
-### I: Interface Segregation
+### I: ISP (Interface Segregation Principle)
 - ISP states that no client should be forced to depend on methods it doesn't use.
 
-### D: Dependency Inversion
+### D: DIP (Dependency Inversion Principle)
+- Entities must depend on abstractions not concretions.
+- It states that the high level module must not depend on the low level module, but they should depend on abstractions.
